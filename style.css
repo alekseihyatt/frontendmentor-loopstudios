@@ -150,6 +150,8 @@ body {
     font-weight: 200; /* Change font size when navbar is expanded */
   }
 
+  
+
   .navbar-links {
     height: 100dvh;
     list-style: none;
@@ -163,10 +165,16 @@ body {
     right: 0;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   }
-  
+
+
+
   #navbar-toggle[aria-expanded="true"] + #navbar-menu .navbar-links {
     padding-inline: 10%;
     gap: 1rem;
+  }
+
+  #navbar[aria-expanded="true"] {
+    position: fixed;
   }
   
   @media screen and (min-width: 768px) {
@@ -204,16 +212,22 @@ section {
     align-items: center;
 }
 
+.desktop-wrapper {
+  margin-inline: auto;
+  width: 80%;
+}
+
+.desktop {
+  border: 2px solid white;
+  padding: 1.5rem;
+}
+
 section h1 {
-    width: 80%;
-    border: 2px solid white;
-    padding: 1.5rem;
     color: white;
     font-family: "Josefin Sans", sans-serif;
     text-transform: uppercase;
     font-size: clamp(2.3125rem, 1.5516rem + 3.8043vi, 4.5rem);
     font-weight: 300;
-    margin-inline: auto;
 }
 
 main {
@@ -363,16 +377,7 @@ footer p {
     }
 
     .desktop {
-        width: 80%;
-    }
-
-    /* */
-
-    section h1 {
-        width: 80%;
-        min-width: 350px;
-        max-width: 550px;
-        margin-inline: 0;
+      max-width: 600px;
     }
 
     main {
@@ -380,28 +385,29 @@ footer p {
         margin-inline: auto;
     }
 
-    .interactive {
-        width: 70%;
-    }
     
     .grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .first-wrapper {
+      display: grid;
+      grid-template-columns: repeat(400px, 1fr); /* Creates 12 columns with equal width */
+      grid-template-rows: repeat(400px, 1fr); /* Creates 6 rows with equal height */
+      gap: 10px; /* Optional: Sets the gap between grid items */
+      
     }
 
-    .first-wrapper {
-        position: relative;
-        margin-bottom: clamp(1.875rem, -6.6964rem + 17.8571vi, 9.375rem);
+    .interactive {
+      grid-area: 1 / 1 / 6 / 4;
+      width: 650px;
     }
 
     .text-wrapper {
-        position: absolute;
-        width: 500px;
-        padding-left: clamp(0.625rem, -2.9464rem + 7.4405vi, 3.75rem);
-        padding-top: clamp(0.625rem, -2.9464rem + 7.4405vi, 3.75rem);
-        bottom: 0;
-        right: 0;
+        grid-area: 3 / 3 / 7 / 8;
         background-color: white;
+        padding: clamp(0.625rem, -2.9464rem + 7.4405vi, 3.75rem);
     }
 
     .text-wrapper h1 {
@@ -414,7 +420,19 @@ footer p {
         margin-bottom: 0;
     }
 
-    
+    .grid-wrapper {
+      position: relative;
+    }
+
+    .grid-wrapper h1 {
+      text-align: left;
+    }
+
+    .button-wrapper {
+      position: absolute;
+      top: 20px;
+      right: 0;
+    }
 
     .col-1 {
         display: flex;
